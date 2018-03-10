@@ -1,0 +1,67 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-6" id="page-container"></div>
+        <div class="col-6">
+            <form id="authForm">
+                <div class="form-group">
+                    <label for="login">Login</label>
+                    <input class="form-control" type="text" id="login" name="login">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" type="text" id="password" name="password">
+                </div>
+                <button id="signIn" type="submit">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	app.handler(function() {
+
+		var $container = $(this).find("#page-container");
+
+		return function (params) {
+
+		    $('form button#signIn').click(function (event) {
+
+		        //
+		        event.preventDefault();
+
+		        var dataJSON = {
+		            login: encodeURIComponent($('#login').val())
+                    , password :encodeURIComponent($('#password').val())
+		        };
+
+		        //
+		        $.ajax({
+		            type: 'POST',
+		            url: 'http://localhost:49245/api/auth',
+		            data: JSON.stringify(dataJSON),
+		            contentType: 'application/json; charset=utf-8',
+		            dataType: 'json',
+		            cache: false
+		        }).done(function (responseText, textStatus, jqXHR) {
+		            //if got code 200
+		            if (responseText !== '' && responseText !== 'error') {
+
+		                //
+		                console.log(responseText);
+		            } else {
+
+		                //
+		                alert("Произошла ошибка. Обратитесь к разработчику сайта");
+		            }
+		            //stopLoadingAnimation();
+		            $(".loader").css("display", "none");
+		        }).fail(function (jqXHR, textStatus, errorThrown) {
+
+		            //if got code 404 or 500, etc.
+		            //stopLoadingAnimation();
+		            $(".loader").css("display", "none");
+		            // alert("Произошла ошибка. Обратитесь к разработчику сайта");
+		        });
+		    });
+	  	};
+  	});
+</script>

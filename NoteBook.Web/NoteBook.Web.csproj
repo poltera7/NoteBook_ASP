@@ -112,6 +112,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -150,6 +151,7 @@
     <Content Include="wwwroot\js\hogan-3.0.2.min.js" />
     <Content Include="wwwroot\js\jquery-3.2.1.min.js" />
     <Content Include="wwwroot\js\jquery-hashchange.js" />
+    <Content Include="wwwroot\pages\auth.htm" />
     <Content Include="wwwroot\pages\orders.htm" />
     <Content Include="wwwroot\pages\states.htm" />
   </ItemGroup>
