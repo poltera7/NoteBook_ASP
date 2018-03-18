@@ -13,10 +13,11 @@
                 </div>
                 <input type="hidden" value="" id="order-id">
                 <button id="save" type="submit">Сохранить</button>
+                <button id="send" type="submit">Добавить</button>
                 <button id="del" type="submit">Удалить</button>
                
             </form>
-            <form id="add">
+            <!--<form id="add">
                 <div class="form-group">
                     <label for="order-customer">Заказчик</label>
                     <input class="form-control" type="text" id="order-customers" name="order-customers">
@@ -33,7 +34,7 @@
                 <button id="cancel" type="submit">Отмена</button>
                
 
-            </form>
+            </form>-->
         </div>
     </div>
 </div>
@@ -87,7 +88,11 @@
 						  	$('tbody th').click(function(event){
 
 								//Блокируем отправку формы
-								event.preventDefault();
+						  	    event.preventDefault();
+
+						  	    $('button#send').hide();
+						  	    $('button#save').show();
+
 						  	    //Асинхронно запрашиваем у контроллера Default информацию об одном заказе
 								$.ajax({
 									type: 'POST',
@@ -122,27 +127,36 @@
 						  	});
 					      /////////////////////////////////////////////////////////////////////////////////////////////////////////
 						  	$('button#add').click(function (event) {
-						  	    $('button#add').hide()
-						  	    $('form#add').fadeIn(600);
 						  	    //Блокируем отправку формы
 						  	    event.preventDefault();
-						  	   
+						  	    $('#order-id').val("");
+						  	    $('button#add').hide();
+						  	    $('button#save').hide();
+						  	    $('button#send').show();
+						  	    $('form#form').fadeIn(600);
 						  	});
                           ////////////////////////////////////////////////////////////////////////////////////////////////////////
-						  	//Обрабатываем клик по кнопке Сохранить на форме
+					      //Обрабатываем клик по кнопке Сохранить на форме
+						  	$('button#save').unbind("click");
 						  	$('button#save').click(function(event){
 
 								//
 								event.preventDefault();
-								//
+						  	    //
+								var urlString;
+
+								    console.log("edit");
+
+								    urlString = '/Default/DoAction?action=order-edit&id='
+									    + $('#order-id').val()
+									    + '&order-customer='
+									    + encodeURIComponent($('#order-customer').val())
+									    + '&order-description='
+									    + encodeURIComponent($('#order-description').val());
+
 								$.ajax({
 									type: 'POST',
-									url: '/Default/DoAction?action=order-edit&id='
-									+ $('#order-id').val()
-									+ '&order-customer='
-									+ encodeURIComponent($('#order-customer').val())
-									+ '&order-description='
-									+ encodeURIComponent($('#order-description').val()),
+									url: urlString,
 									//contentType: 'text/plain',
 									cache: false
 							  	}).done(function(responseText, textStatus, jqXHR) {
@@ -170,21 +184,27 @@
 							  	});
 						  	});
 					      ////////////////////////////////////////////////////////////////////
-					      //Обрабатываем клик по кнопке Сохранить на форме
+					      //Обрабатываем клик по кнопке Добавить на форме
+						  	$('button#send').unbind("click");
 						  	$('button#send').click(function (event) {
 
 						  	    //
 						  	    event.preventDefault();
 						  	    //
+						  	    var urlString;
+						  	    
+
+						  	    console.log("create");
+
+						  	    urlString = '/Default/DoAction?action=order-add'
+									+ '&order-customer='
+									+ encodeURIComponent($('#order-customer').val())
+									+ '&order-description='
+									+ encodeURIComponent($('#order-description').val());
+
 						  	    $.ajax({
 						  	        type: 'POST',
-						  	        url: '/Default/DoAction?action=order-add'
-						  	        + '&order-customer='
-									+ encodeURIComponent($('#order-customers').val())
-									+ '&order-description='
-									+ encodeURIComponent($('#order-descriptions').val()),
-						  	      
-									
+						  	        url: urlString,
 						  	        //contentType: 'text/plain',
 						  	        cache: false
 						  	    }).done(function (responseText, textStatus, jqXHR) {
@@ -193,7 +213,7 @@
 
 						  	            //
 						  	            console.log(responseText);
-						  	            $('form#add').fadeOut(600);
+						  	            $('form').fadeOut(600);
 						  	            //
 						  	            populateTable();
 						  	        } else {
@@ -218,7 +238,8 @@
 						  	
 						  	});
                          //////////////////////////////////////////////////////////////////
-						  	$('button#del').on('click',(function (event) {
+						  	$('button#del').unbind("click");
+						  	$('button#del').on('click', (function (event) {
 						  	  
 						  	    event.preventDefault();
 						  	 

@@ -66,3 +66,25 @@ C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.We
 C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\obj\Debug\NoteBook.Domain.dll
 C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\obj\Debug\NoteBook.Domain.pdb
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\NoteBook.Domain.dll.config
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\NoteBook.Domain.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\NoteBook.Domain.pdb
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\EntityFramework.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.Helpers.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.Mvc.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.Razor.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.WebPages.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\EntityFramework.xml
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.Helpers.xml
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.Mvc.xml
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.Razor.xml
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.WebPages.xml
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\obj\Debug\NoteBook.Domain.dll
+C:\Users\student\Documents\Visual Studio 2015\Projects\NoteBookASP2012-master\NoteBook.Domain\obj\Debug\NoteBook.Domain.pdb

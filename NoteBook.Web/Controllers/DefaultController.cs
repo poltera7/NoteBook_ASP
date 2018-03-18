@@ -166,9 +166,15 @@ namespace NoteBook.Web.Controllers
                                 //State = state
 
                             };
-
-                                    mRepository.addOrder(order);
-                                    result = new { add = "ok" };
+                        try
+                        {
+                            mRepository.addOrder(order);
+                            result = new { add = "ok" };
+                        }
+                        catch (Exception ex)
+                        {
+                            result = new { error = ex.InnerException.InnerException.Message };
+                        }
 
                             //    }
                             //    catch (Exception ex)

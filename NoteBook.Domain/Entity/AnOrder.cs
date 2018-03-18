@@ -11,7 +11,8 @@ namespace NoteBook.Domain.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class AnOrder
     {
         public int id { get; set; }
@@ -20,6 +21,7 @@ namespace NoteBook.Domain.Entity
         public System.DateTime created_at { get; set; }
         public Nullable<int> state_id { get; set; }
     
-        public virtual State State { get; set; }
+        //[ForeignKey("State")]
+        //public virtual State State { get; set; }
     }
 }
