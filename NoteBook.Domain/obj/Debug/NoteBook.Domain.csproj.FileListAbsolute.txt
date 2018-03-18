@@ -64,6 +64,5 @@ C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.We
 C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.WebPages.xml
 C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\bin\Debug\System.Web.WebPages.Razor.xml
-C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\obj\Debug\NoteBook.Domain.csprojResolveAssemblyReference.cache
 C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\obj\Debug\NoteBook.Domain.dll
 C:\Users\user\Desktop\NoteBookASP2012-master\NoteBook.Domain\obj\Debug\NoteBook.Domain.pdb

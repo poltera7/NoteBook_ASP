@@ -155,37 +155,28 @@ namespace NoteBook.Web.Controllers
                     //////////////////////////////////////////////////////////////////////////////////////////////
                     case "order-add":
                         {
-                            if (Request["id"] == null)
+                            AnOrder order = new AnOrder()
                             {
-                                try
-                                {
-                                    State state =
-                                        (from s in mRepository.States
-                                         where s.name == "created"
-                                         select s
-                                        ).Single();
 
-                                    AnOrder order = new AnOrder()
-                                    {
-                                       
-                                        customer_name = Request["order-customer"],
-                                        description = Request["order-description"],
-                                        created_at = new DateTime(),
-                                        state_id = state.id,
-                                        State = state
+                                customer_name = Request["order-customer"],
+                                description = Request["order-description"],
+                                state_id = 1,
+                                created_at = new DateTime(),
+                                //state_id = state.id,
+                                //State = state
 
-                                    };
+                            };
 
                                     mRepository.addOrder(order);
                                     result = new { add = "ok" };
 
-                                }
-                                catch (Exception ex)
-                                {
+                            //    }
+                            //    catch (Exception ex)
+                            //    {
 
-                                    result = new { error = ex.Message };
-                                }
-                            }
+                            //        result = new { error = ex.Message };
+                            //    }
+                            //}
                         }
                             break;
                         

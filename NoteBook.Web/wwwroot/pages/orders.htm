@@ -24,17 +24,10 @@
                 <div class="form-group">
                     <label for="order-description">Описание заказа</label>
                     <textarea class="form-control" id="order-descriptions" name="order-descriptions" rows="5"></textarea>
+                    <textarea class="form-control" id="State.id" name="State.ids" rows="5"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="State.name">State</label>
-                    <div class="form-group">
-                        
-                        <select class="form-control" id="sel1">
-                            <option>1</option>
-                          
-                        </select>
-                    </div>
-                </div>
+                
+                
                 <input type="hidden" value="" id="order-id">
                 <button id="send" type="submit">Записать</button>
                 <button id="cancel" type="submit">Отмена</button>
@@ -130,45 +123,10 @@
 					      /////////////////////////////////////////////////////////////////////////////////////////////////////////
 						  	$('button#add').click(function (event) {
 						  	    $('button#add').hide()
+						  	    $('form#add').fadeIn(600);
 						  	    //Блокируем отправку формы
 						  	    event.preventDefault();
-						  	    //Асинхронно запрашиваем у контроллера Default информацию об одном заказе
-						  	    $.ajax({
-						  	        type: 'POST',
-						  	        url: '/Default/DoAction?action=order-add'
-						  	        + $('#order-id').val()
-									+ '&order-customer='
-									+ $('#order-customers')
-									+ '&order-description='
-									+ $('#order-descriptions'),
-                                   
-						  	        //contentType: 'text/plain',
-						  	        cache: false
-						  	    }).done(function (responseText, textStatus, jqXHR) {
-						  	        //if got code 200
-						  	        if (responseText !== '' && responseText !== 'error') {
-
-						  	            //
-						  	            //console.log(responseText.title);
-
-						  	            //$('#order-id').val(responseText.id);
-						  	            $('#order-customer').val(responseText.cust);
-						  	            $('#order-description').val(responseText.descr);
-                                       
-						  	            $('form#add').fadeIn(600);
-						  	        } else {
-
-						  	            alert("Произошла ошибка. Обратитесь к разработчику сайта");
-						  	        }
-						  	        //stopLoadingAnimation();
-						  	        $(".loader").css("display", "none");
-						  	    }).fail(function (jqXHR, textStatus, errorThrown) {
-
-						  	        //if got code 404 or 500, etc.
-						  	        //stopLoadingAnimation();
-						  	        $(".loader").css("display", "none");
-						  	        // alert("Произошла ошибка. Обратитесь к разработчику сайта");
-						  	    });
+						  	   
 						  	});
                           ////////////////////////////////////////////////////////////////////////////////////////////////////////
 						  	//Обрабатываем клик по кнопке Сохранить на форме
@@ -220,12 +178,12 @@
 						  	    //
 						  	    $.ajax({
 						  	        type: 'POST',
-						  	        url: '/Default/DoAction?action=order-add&'
+						  	        url: '/Default/DoAction?action=order-add'
 						  	        + '&order-customer='
-									+ encodeURIComponent($('#order-customer').val())
+									+ encodeURIComponent($('#order-customers').val())
 									+ '&order-description='
-									+ encodeURIComponent($('#order-description').val()),
-									
+									+ encodeURIComponent($('#order-descriptions').val()),
+						  	      
 									
 						  	        //contentType: 'text/plain',
 						  	        cache: false

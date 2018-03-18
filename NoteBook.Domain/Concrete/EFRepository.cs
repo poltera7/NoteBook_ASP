@@ -46,30 +46,31 @@ namespace NoteBook.Domain.Concrete
 
         public void addOrder(AnOrder _order)
         {
-           
             try
             {
-                AnOrder dbEntry = db.AnOrders.Find(_order.id);
-                //Если запись о проекте существует - обновляем ее данные
-                if (dbEntry != null)
-                {
-                    dbEntry.customer_name = _order.customer_name;
+                AnOrder dbEntry = db.AnOrders.Add(_order);
+            if (dbEntry != null)
+            {
+                dbEntry.customer_name = _order.customer_name;
                     dbEntry.description = _order.description;
-                }
-                //Если нет - создаем запись
-                else
-                {
-                    db.AnOrders.Add(_order);
-                }
-                db.SaveChanges();
-               
+                    dbEntry.state_id = _order.state_id;
+                    dbEntry.created_at = _order.created_at;
             }
+            //Если нет - создаем запись
+            else
+            {
+                db.AnOrders.Add(_order);
+            }
+            db.SaveChanges();
+        }
             catch (Exception ex)
             {
 
             }
-           
-        }
+
+
+
+}
 
         public void DelOrder(int _orderId)
         {
