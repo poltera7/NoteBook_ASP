@@ -168,7 +168,7 @@ namespace NoteBook.Web.Controllers
                             };
                         try
                         {
-                            mRepository.addOrder(order);
+                            mRepository.AddOrder(order);
                             result = new { add = "ok" };
                         }
                         catch (Exception ex)
@@ -207,6 +207,47 @@ namespace NoteBook.Web.Controllers
                             }
                             break;
                         }
+                    //////////////////////////////////////////////////////////////////// State
+                    case "state-add":
+                        {
+                            State state = new State()
+                            {
+
+                                name = Request["name"],
+
+
+                            };
+                            try
+                            {
+                                mRepository.addState(state);
+                                result = new { add = "ok" };
+                            }
+                            catch (Exception ex)
+                            {
+                                result = new { error = ex.InnerException.InnerException.Message };
+                            }
+                        }
+                        break;
+                    case "states":
+                        {
+                            try
+                            {
+
+                                result =
+                                    new
+                                    {
+                                        pagesData = mRepository.States.ToArray()
+                                    };
+                            }
+                            catch (Exception ex)
+                            {
+
+                                result = new { error = ex.Message };
+                            }
+                            break;
+                        }
+
+                    ///////////////////////////////////////////////////////////////////////////EndState
                     default:
                         break;
                 }

@@ -14,6 +14,7 @@ namespace NoteBook.Domain.Abstract
 
         AnOrder SaveOrder(AnOrder _order);
         void DelOrder(int _orderId);
-        void addOrder(AnOrder _order);
+        void AddOrder(AnOrder _order);
+        void addState(State _states);
     }
 }

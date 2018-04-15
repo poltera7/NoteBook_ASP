@@ -44,10 +44,9 @@ namespace NoteBook.Domain.Concrete
             return result;
         }
 
-        public void addOrder(AnOrder _order)
+        public void AddOrder(AnOrder _order)
         {
-            //try
-            //{
+            
                 AnOrder dbEntry = db.AnOrders.Add(_order);
                 if (dbEntry != null)
                 {
@@ -62,15 +61,30 @@ namespace NoteBook.Domain.Concrete
                     db.AnOrders.Add(_order);
                 }
                 db.SaveChanges();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
+           
 
 
 
         }
+       
+        public void addState(State _states)
+        {
+           
+            State dbEntry = db.States.Add(_states);
+            if (dbEntry != null)
+            {
+               dbEntry.name = _states.name;
+              
+            }
+            //Если нет - создаем запись
+            else
+            {
+                db.States.Add(_states);
+            }
+            db.SaveChanges();
+           
+        }
+       
 
         public void DelOrder(int _orderId)
         {
