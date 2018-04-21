@@ -44,7 +44,7 @@
                             + '<tr>'
                             + '<th>ID</th>'
                             + '<th>Name</th>'
-                            +
+                            + '<th></th>'
                             +    '</tr>'
                             + '</thead>'
                             + '<tbody>'
@@ -52,16 +52,65 @@
                             + '<tr>'
                             + '<th scope="row">{{id}}</th>'
                             + '<td>{{name}}</td>'
-                            +
-                            +               '</tr>'
+                            + '<td><input type="checkbox" id="{{id}}"></td>'
+                            + '</tr>'
                             + '{{/pagesData}}'
                             + '</tbody>'
                             + '</table>'
                             + '<button id="add" type="submit">Добавить</button>'
                             + '<button id="delstate" type ="submit">Удалить</buttor>'
+                           
                         );
                         //
                         $container.html(template.render(responseText));
+
+                        //Select row
+                        /*$('table tr').unbind("click");
+                        $('table tr:not(:first)').click(function (event) {
+                            //Блокируем отправку формы
+                            event.preventDefault();
+                            $(this).find('th:nth-child(1)');
+                            console.log($(this).find('th:nth-child(1)').text());
+                        });*/
+
+                        $('button#delstate').unbind("click");
+                        $('button#delstate').click(function (event) {
+                            //Блокируем отправку формы
+                            event.preventDefault();
+
+                            var checked = $('table tr:not(:first) input:checked')
+                                .map(function () {
+                                    return this.id;
+                                })
+                                .get();
+                            console.log(checked);
+                            $.ajax({
+                                type: 'POST',
+                                url: '/Default/DoActionModel?action=state-del',
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: "json",
+                                data: JSON.stringify({ states: checked }),
+                                cache: false
+                            }).done(function (responseText, textStatus, jqXHR) {
+                                //if got code 200
+                                if (responseText !== '' && responseText !== 'error') {
+
+                                    console.log(responseText);
+                                    populateTable();
+                                    } else {
+
+                                        alert("Произошла ошибка. Обратитесь к разработчику сайта");
+                                    }
+                                    //stopLoadingAnimation();
+                                    $(".loader").css("display", "none");
+                                }).fail(function (jqXHR, textStatus, errorThrown) {
+
+                                    //if got code 404 or 500, etc.
+                                    //stopLoadingAnimation();
+                                    $(".loader").css("display", "none");
+                                    // alert("Произошла ошибка. Обратитесь к разработчику сайта");
+                                });
+                        });
 
                         //При помощи $ находим ячейки ИД и устанавливаем им обработчики клика
                         

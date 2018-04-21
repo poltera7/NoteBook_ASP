@@ -246,7 +246,69 @@ namespace NoteBook.Web.Controllers
                             }
                             break;
                         }
+                    /*case "state-del":
+                        {
+                            if (Request["states"] != null)
+                            {
+                                try
+                                {
+                                    //int selectedId = Int32.Parse(Request["id"]);
 
+                                    //mRepository.DelOrder(selectedId);
+                                    //result = new { deleted = "ok" };
+                                    result = new { deleted = Request["states"] };
+
+                                }
+                                catch (Exception ex)
+                                {
+
+                                    result = new { error = ex.Message };
+                                }
+                            }
+                            break;
+                        }*/
+                    ///////////////////////////////////////////////////////////////////////////EndState
+                    default:
+                        break;
+                }
+            }
+            return Json(result);
+            //return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        //[HttpGet]
+        public JsonResult DoActionModel(int[] states)
+        {
+            dynamic result = new { };
+            if (Request["action"] != null)
+            {
+                String actionString = Request["action"];
+                switch (actionString)
+                {
+                    case "state-del":
+                        {
+                            try
+                            {
+                                int[] deletedIds = new int[states.Length];
+                                int i = 0;
+                                foreach (var item in states)
+                                {
+                                    mRepository.DelState(item);
+                                    deletedIds[i] = item;
+                                        i++;
+                                }
+                                result = new { deleted = deletedIds };
+                                //result = new { deleted = states };
+
+                            }
+                            catch (Exception ex)
+                            {
+
+                                result = new { error = ex.Message };
+                            }
+                            break;
+                        }
                     ///////////////////////////////////////////////////////////////////////////EndState
                     default:
                         break;

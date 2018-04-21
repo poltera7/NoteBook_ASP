@@ -100,6 +100,21 @@ namespace NoteBook.Domain.Concrete
 
             }
         }
+
+        public void DelState(int _stateId)
+        {
+            try
+            {
+                State state = db.States.Find(_stateId);
+                db.States.Remove(state);
+                db.SaveChanges();
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }
 
