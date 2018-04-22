@@ -19,7 +19,8 @@
 <script type="text/javascript">
 	app.handler(function() {
 
-		var $container = $(this).find("#page-container");
+        var $container = $(this).find("#page-container");
+        var $navBar = $("nav #auth-item");
 
 		return function (params) {
 
@@ -33,10 +34,10 @@
                     , password :encodeURIComponent($('#password').val())
 		        };
 
-		        //
+		        //url: 'http://localhost:49245/api/auth',
 		        $.ajax({
 		            type: 'POST',
-		            url: 'http://localhost:49245/api/auth',
+		            url: '/api/auth',
 		            data: JSON.stringify(dataJSON),
 		            contentType: 'application/json; charset=utf-8',
 		            dataType: 'json',
@@ -46,7 +47,11 @@
 		            if (responseText !== '' && responseText !== 'error') {
 
 		                //
-		                console.log(responseText);
+                        console.log(responseText);
+                        console.log($navBar.find('#sign-out'));
+                        $navBar.find('#sign-in').hide();
+                        $navBar.find('#sign-out').text('SignOut (' + responseText.signed.login + ')');
+                        $navBar.find('#sign-out').show();
 		            } else {
 
 		                //
@@ -61,7 +66,8 @@
 		            $(".loader").css("display", "none");
 		            // alert("Произошла ошибка. Обратитесь к разработчику сайта");
 		        });
-		    });
+            });
+            $(".loader").css("display", "none");
 	  	};
   	});
 </script>

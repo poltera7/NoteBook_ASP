@@ -13,3 +13,17 @@ CREATE TABLE [dbo].[AnOrders] (
 	PRIMARY KEY CLUSTERED ([id] ASC),
 	FOREIGN KEY ([state_id]) REFERENCES [dbo].[States] ([id])
 );
+
+CREATE TABLE [dbo].[UserTypes]
+(
+	[id] INT IDENTITY PRIMARY KEY
+	, [name] VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE [dbo].[Users]
+(
+	[id] INT IDENTITY PRIMARY KEY
+	, [login] VARCHAR(25) NOT NULL
+	, [password] VARCHAR(255) NOT NULL
+	, [user_type_id] INT REFERENCES [UserTypes]([id]) NOT NULL
+)

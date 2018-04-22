@@ -3,7 +3,7 @@
     //alert('Hello!');
     $.ajax({
         type: 'POST',
-        url: '/Default/DoAction?action=test-param&state-id=0',
+        url: '/api/auth',
         //contentType: 'text/plain',
         cache: false
     }).done(function (responseText, textStatus, jqXHR) {

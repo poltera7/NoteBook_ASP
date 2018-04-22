@@ -14,6 +14,7 @@ namespace NoteBook.Web.Controllers
         public DefaultController(IRepository _projectRepository)
         {
             mRepository = _projectRepository;
+            
         }
 
         // GET: Default

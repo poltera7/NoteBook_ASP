@@ -1,14 +1,28 @@
-﻿using System;
+﻿using NoteBook.Domain.Abstract;
+using NoteBook.Domain.Concrete;
+using NoteBook.Domain.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace NoteBook.Web.Controllers
 {
     public class AuthController : ApiController
     {
+
+        private IRepository mRepository;
+        /*public AuthController(IRepository _projectRepository)
+        {
+            mRepository = _projectRepository;
+        }*/
+        public AuthController()
+        {
+            mRepository = new EFRepository();
+        }
         // GET api/<controller>
         /*public IEnumerable<string> Get()
         {
@@ -30,7 +44,22 @@ namespace NoteBook.Web.Controllers
         // POST api/<controller>
         public dynamic Post(RecipeInformation _data)
         {
-            return new { signed = _data.login };
+            User user =
+                mRepository.Users
+                .Select(u => u)
+                .Where(u => (u.login == _data.login))
+                .SingleOrDefault();
+            if (user != null)
+            {
+                //Session["dhfjg"] = 1;
+                HttpContext.Current.Session["user"] = user;
+                return new { signed = HttpContext.Current.Session["user"] };
+            }
+            else {
+
+                return new { signed = "no_user" };
+            }
+            
         }
 
         // PUT api/<controller>/5

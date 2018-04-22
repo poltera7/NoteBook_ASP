@@ -25,3 +25,8 @@
         transform: rotate(360deg);
     }
 }
+
+/*navbar*/
+#sign-out {
+    display:none;
+}

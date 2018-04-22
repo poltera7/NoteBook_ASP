@@ -11,6 +11,8 @@ namespace NoteBook.Domain.Abstract
     {
         IQueryable<State> States { get; }
         IQueryable<AnOrder> Orders { get; }
+        IQueryable<UserType> UserTypes { get; }
+        IQueryable<User> Users { get; }
 
         AnOrder SaveOrder(AnOrder _order);
         void DelOrder(int _orderId);

@@ -16,6 +16,8 @@ namespace NoteBook.Domain.Concrete
 
         public IQueryable<State> States { get { return db.States; } }
         public IQueryable<AnOrder> Orders { get { return db.AnOrders; } }
+        public IQueryable<UserType> UserTypes { get { return db.UserTypes; } }
+        public IQueryable<User> Users { get { return db.Users; } }
 
         public AnOrder SaveOrder(AnOrder _order)
         {

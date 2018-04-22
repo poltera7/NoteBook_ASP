@@ -77,7 +77,9 @@
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFRepository.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\AnOrder.cs" />
+    <Compile Include="Entity\UserType.cs" />
     <Compile Include="Entity\State.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
