@@ -35,6 +35,12 @@ namespace NoteBook.Web.Controllers
             return new { signed = _data.login };
         }
 
+        public dynamic Get(String _action)
+        {
+            HttpContext.Current.Session["user"] = null;
+            return new { signed = _action };
+        }
+
         // GET api/<controller>/5
         public string Get(int id)
         {
@@ -44,22 +50,50 @@ namespace NoteBook.Web.Controllers
         // POST api/<controller>
         public dynamic Post(RecipeInformation _data)
         {
-            User user =
-                mRepository.Users
-                .Select(u => u)
-                .Where(u => (u.login == _data.login))
-                .SingleOrDefault();
-            if (user != null)
+            if (_data.actionType == RecipeInformation.AUTH)
             {
-                //Session["dhfjg"] = 1;
-                HttpContext.Current.Session["user"] = user;
-                return new { signed = HttpContext.Current.Session["user"] };
-            }
-            else {
+                if (_data.login == "" && _data.password == "" && HttpContext.Current.Session["user"] == null)
+                {
+                    return new { signed = "sign-out" };
+                }
+                else if (HttpContext.Current.Session["user"] != null)
+                {
+                    return new { signed = HttpContext.Current.Session["user"] };
+                }
 
-                return new { signed = "no_user" };
+                User user =
+                    mRepository.Users
+                    .Select(u => u)
+                    .Where(u => (u.login == _data.login))
+                    .SingleOrDefault();
+                if (user != null)
+                {
+                    //Session["dhfjg"] = 1;
+                    HttpContext.Current.Session["user"] = user;
+                    return new { signed = HttpContext.Current.Session["user"] };
+                }
+
+                else
+                {
+                    
+                    return new { signed = "no_user" };
+                }
             }
-            
+            else
+            {
+
+                User user =
+                    mRepository.Users
+                    .Select(u => u)
+                    .Where(u => (u.login == _data.login))
+                    .SingleOrDefault();
+                if (user == null)
+                {
+                    return new { signed = "est" };
+                }
+                return new { signed = "todo" };
+                 
+        }
         }
 
         // PUT api/<controller>/5
@@ -75,7 +109,11 @@ namespace NoteBook.Web.Controllers
 
     public class RecipeInformation
     {
+        public static String AUTH = "AUTH";
+        public static String REG = "REG";
+        public String actionType { get; set; }
         public string login { get; set; }
         public string password { get; set; }
+        public string user_type_id { get; set; }
     }
 }

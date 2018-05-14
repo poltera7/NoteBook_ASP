@@ -45,7 +45,8 @@
 
 		return function (params) {
 
-		    $('form').hide();
+            //$('form').hide();
+            $('form#form').css("display", "none");
 
 			function populateTable() {
 				$.ajax({
@@ -165,7 +166,7 @@
 
 											//
 											console.log(responseText);
-											$('form').fadeOut(600);
+											$('form#form').fadeOut(600);
 											//
 		  									populateTable();
 									  } else {
@@ -213,7 +214,7 @@
 
 						  	            //
 						  	            console.log(responseText);
-						  	            $('form').fadeOut(600);
+						  	            $('form#form').fadeOut(600);
 						  	            //
 						  	            populateTable();
 						  	        } else {
@@ -255,7 +256,7 @@
 
 						  	            
 						  	            console.log(responseText);
-						  	            $('form').fadeOut(600);
+						  	            $('form#form').fadeOut(600);
 						  	            //
 						  	            populateTable();
 						  	       // } else {

@@ -186,7 +186,35 @@ namespace NoteBook.Web.Controllers
                             //}
                         }
                             break;
-                        
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////
+                    case "login-add":
+                        {
+                            User users = new User()
+                            {
+
+                                login = Request["login"],
+                                password = Request["password"],
+                                user_type_id = 1,
+                            };
+                            try
+                            {
+                                mRepository.addLogin(users);
+                                result = new { add = "ok" };
+                            }
+                            catch (Exception ex)
+                            {
+                                result = new { error = ex.InnerException.InnerException.Message };
+                            }
+
+                            //    }
+                            //    catch (Exception ex)
+                            //    {
+
+                            //        result = new { error = ex.Message };
+                            //    }
+                            //}
+                        }
+                        break;
                     //////////////////////////////////////////////////////////////////////////////////////////////////
                     case "order-del":
                         {

@@ -86,7 +86,27 @@ namespace NoteBook.Domain.Concrete
             db.SaveChanges();
            
         }
-       
+
+        public void addLogin(User _users)
+        {
+            User dbEntry = db.Users.Add(_users);
+            if (dbEntry != null)
+            {
+                dbEntry.login = _users.login;
+                //dbEntry.login = "misha";
+                dbEntry.password = _users.password;
+               // dbEntry.password = "1111";
+                dbEntry.user_type_id = 1;
+                Console.WriteLine("test");
+                
+            }
+            else
+            {
+                db.Users.Add(_users);
+            }
+            db.SaveChanges();
+            
+        }
 
         public void DelOrder(int _orderId)
         {
